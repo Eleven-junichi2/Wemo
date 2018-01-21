@@ -1,0 +1,30 @@
+{% extends "wemo_app/base.html" %}
+
+{% load static %}
+
+{% block subtitle %}メモ一覧{% endblock %}
+
+{% block body_attr %}class="w3-theme-l4 w3-animate-opacity"{% endblock %}
+
+{% block content_display %}w3-display-top{% endblock %}
+
+{% block content %}
+<div class="w3-border-bottom w3-margin-bottom">
+    <h1>メモ一覧</h1>
+</div>
+<div class="w3-border-bottom w3-margin-bottom">
+    <ul class="w3-ul">
+    {% for memo in memo_list %}
+        <a href="{% url 'wemo_app:memo_view' memo.id %}" class="w3-mobile">
+            <li class="w3-border w3-round w3-margin-bottom w3-hover-border-theme">
+                <h2>{{ memo.memo_title|slice:":30" }}</h2>
+                <span class="w3-small">{{ memo.memo_text|slice:":28" }}…</span>
+            </li>
+        </a>
+    {% endfor %}
+    </ul>
+</div>
+<a href="{% url 'wemo_app:memo_create' %}" class="w3-button w3-border w3-round-large w3-margin-bottom w3-ripple">
+    <i class="material-icons w3-large">create メモをつくる</i>
+</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "wemo_app/base.html" %}
+
+{% load static %}
+
+{% block subtitle %}メモをカンタンに。お手軽に。{% endblock %}
+
+{% block body_attr %}class="w3-theme w3-animate-opacity"{% endblock %}
+
+{% block content_display %}w3-display-middle{% endblock %}
+
+{% block content %}
+<div class="w3-border-bottom w3-margin">
+    <h1>Wemo</h1>
+</div>
+<img src="{% static 'wemo_app/images/Paper-notes.svg' %}" width="100vm" class="w3-animate-zoom">
+<h2>メモをカンタンに。お手軽に。</h2>
+<p>WemoはWeb上でメモを作成・管理できるオンラインメモアプリです。</p>
+<a href="{% url 'wemo_app:memo_list' %}" class="w3-button w3-round-large w3-ripple w3-margin w3-border">
+    はじめる
+</a>
+{% endblock %}
+

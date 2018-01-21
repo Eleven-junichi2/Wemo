@@ -1,0 +1,24 @@
+{% extends "wemo_app/base.html" %}
+
+{% load static %}
+
+{% block subtitle %}メモ一覧{% endblock %}
+
+{% block body_attr %}class="w3-theme-l4 w3-animate-opacity"{% endblock %}
+
+{% block content_display %}w3-display-top{% endblock %}
+
+{% block content %}
+<div class="w3-border-bottom w3-margin">
+    <h1>メモを書き直す</h1>
+</div>
+<form action="{% url 'wemo_app:memo_update' memo.id %}" class="w3-container w3-margin-bottom w3-margin-top" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="OK" class="w3-input w3-button w3-border w3-round w3-ripple">
+</form>
+
+<a href="{% url 'wemo_app:memo_list' %}" class="w3-button w3-border w3-round-large w3-margin-bottom w3-margin-top">
+    <i class="material-icons w3-large">home メモ一覧に戻る</i>
+</a>
+{% endblock %}
